@@ -2,8 +2,13 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
+interface User {
+  email?: string | null;
+  id?: string;
+}
+
 interface AuthContextType {
-  user: null;
+  user: User | null;
   session: null;
   loading: boolean;
   showAuthModal: boolean;
