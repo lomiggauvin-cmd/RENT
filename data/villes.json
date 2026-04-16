@@ -1,0 +1,1131 @@
+{
+  "75056": {
+    "nom": "Paris",
+    "priceM2": 10200,
+    "loyerM2": 35,
+    "adr": 130,
+    "quartiers": [
+      {
+        "cp": "75001",
+        "nom": "1er — Louvre",
+        "priceM2": 12800,
+        "loyerM2": 32,
+        "adr": 170
+      },
+      {
+        "cp": "75002",
+        "nom": "2e — Bourse",
+        "priceM2": 11800,
+        "loyerM2": 30,
+        "adr": 155
+      },
+      {
+        "cp": "75003",
+        "nom": "3e — Temple",
+        "priceM2": 12200,
+        "loyerM2": 30,
+        "adr": 160
+      },
+      {
+        "cp": "75004",
+        "nom": "4e — Hôtel-de-Ville",
+        "priceM2": 13500,
+        "loyerM2": 33,
+        "adr": 175
+      },
+      {
+        "cp": "75005",
+        "nom": "5e — Panthéon",
+        "priceM2": 12500,
+        "loyerM2": 31,
+        "adr": 150
+      },
+      {
+        "cp": "75006",
+        "nom": "6e — Luxembourg",
+        "priceM2": 16000,
+        "loyerM2": 37,
+        "adr": 185
+      },
+      {
+        "cp": "75007",
+        "nom": "7e — Palais-Bourbon",
+        "priceM2": 15500,
+        "loyerM2": 36,
+        "adr": 190
+      },
+      {
+        "cp": "75008",
+        "nom": "8e — Élysée",
+        "priceM2": 12000,
+        "loyerM2": 32,
+        "adr": 175
+      },
+      {
+        "cp": "75009",
+        "nom": "9e — Opéra",
+        "priceM2": 11000,
+        "loyerM2": 28,
+        "adr": 140
+      },
+      {
+        "cp": "75010",
+        "nom": "10e — Entrepôt",
+        "priceM2": 10200,
+        "loyerM2": 26,
+        "adr": 115
+      },
+      {
+        "cp": "75011",
+        "nom": "11e — Popincourt",
+        "priceM2": 10500,
+        "loyerM2": 26,
+        "adr": 110
+      },
+      {
+        "cp": "75012",
+        "nom": "12e — Reuilly",
+        "priceM2": 9800,
+        "loyerM2": 25,
+        "adr": 105
+      },
+      {
+        "cp": "75013",
+        "nom": "13e — Gobelins",
+        "priceM2": 9500,
+        "loyerM2": 24,
+        "adr": 95
+      },
+      {
+        "cp": "75014",
+        "nom": "14e — Observatoire",
+        "priceM2": 10500,
+        "loyerM2": 26,
+        "adr": 105
+      },
+      {
+        "cp": "75015",
+        "nom": "15e — Vaugirard",
+        "priceM2": 10800,
+        "loyerM2": 26,
+        "adr": 110
+      },
+      {
+        "cp": "75016",
+        "nom": "16e — Passy",
+        "priceM2": 12500,
+        "loyerM2": 30,
+        "adr": 150
+      },
+      {
+        "cp": "75017",
+        "nom": "17e — Batignolles",
+        "priceM2": 11000,
+        "loyerM2": 27,
+        "adr": 125
+      },
+      {
+        "cp": "75018",
+        "nom": "18e — Butte-Montmartre",
+        "priceM2": 10000,
+        "loyerM2": 25,
+        "adr": 100
+      },
+      {
+        "cp": "75019",
+        "nom": "19e — Buttes-Chaumont",
+        "priceM2": 8800,
+        "loyerM2": 22,
+        "adr": 85
+      },
+      {
+        "cp": "75020",
+        "nom": "20e — Ménilmontant",
+        "priceM2": 9200,
+        "loyerM2": 23,
+        "adr": 90
+      }
+    ]
+  },
+  "69123": {
+    "nom": "Lyon",
+    "priceM2": 5100,
+    "loyerM2": 16,
+    "adr": 78,
+    "quartiers": [
+      {
+        "cp": "69001",
+        "nom": "1er — Presqu'île Nord",
+        "priceM2": 5200,
+        "loyerM2": 16,
+        "adr": 85
+      },
+      {
+        "cp": "69002",
+        "nom": "2e — Presqu'île Sud",
+        "priceM2": 5500,
+        "loyerM2": 17,
+        "adr": 92
+      },
+      {
+        "cp": "69003",
+        "nom": "3e — Part-Dieu",
+        "priceM2": 5000,
+        "loyerM2": 16,
+        "adr": 75
+      },
+      {
+        "cp": "69004",
+        "nom": "4e — Croix-Rousse",
+        "priceM2": 5800,
+        "loyerM2": 17,
+        "adr": 80
+      },
+      {
+        "cp": "69005",
+        "nom": "5e — Vieux Lyon",
+        "priceM2": 4800,
+        "loyerM2": 15,
+        "adr": 88
+      },
+      {
+        "cp": "69006",
+        "nom": "6e — Brotteaux",
+        "priceM2": 6500,
+        "loyerM2": 19,
+        "adr": 95
+      },
+      {
+        "cp": "69007",
+        "nom": "7e — Guillotière",
+        "priceM2": 5000,
+        "loyerM2": 16,
+        "adr": 68
+      },
+      {
+        "cp": "69008",
+        "nom": "8e — Monplaisir",
+        "priceM2": 4200,
+        "loyerM2": 14,
+        "adr": 62
+      },
+      {
+        "cp": "69009",
+        "nom": "9e — Vaise",
+        "priceM2": 4500,
+        "loyerM2": 14,
+        "adr": 58
+      }
+    ]
+  },
+  "13055": {
+    "nom": "Marseille",
+    "priceM2": 3600,
+    "loyerM2": 15,
+    "adr": 72,
+    "quartiers": [
+      {
+        "cp": "13001",
+        "nom": "1er-2e — Vieux-Port",
+        "priceM2": 3800,
+        "loyerM2": 14,
+        "adr": 82
+      },
+      {
+        "cp": "13006",
+        "nom": "6e — Castellane",
+        "priceM2": 5000,
+        "loyerM2": 17,
+        "adr": 78
+      },
+      {
+        "cp": "13007",
+        "nom": "7e-8e — Périer",
+        "priceM2": 5500,
+        "loyerM2": 18,
+        "adr": 95
+      },
+      {
+        "cp": "13009",
+        "nom": "9e-10e — La Capelette",
+        "priceM2": 3400,
+        "loyerM2": 13,
+        "adr": 58
+      },
+      {
+        "cp": "13013",
+        "nom": "13e — Les Olives",
+        "priceM2": 3200,
+        "loyerM2": 13,
+        "adr": 50
+      },
+      {
+        "cp": "13014",
+        "nom": "14e-16e — Nord",
+        "priceM2": 2500,
+        "loyerM2": 11,
+        "adr": 45
+      }
+    ]
+  },
+  "31555": {
+    "nom": "Toulouse",
+    "priceM2": 3700,
+    "loyerM2": 13,
+    "adr": 65,
+    "quartiers": [
+      {
+        "cp": "31000",
+        "nom": "Centre historique",
+        "priceM2": 5200,
+        "loyerM2": 16,
+        "adr": 80
+      },
+      {
+        "cp": "31300",
+        "nom": "Saint-Cyprien",
+        "priceM2": 4500,
+        "loyerM2": 15,
+        "adr": 72
+      },
+      {
+        "cp": "31000",
+        "nom": "Carmes / Minimes",
+        "priceM2": 4800,
+        "loyerM2": 15,
+        "adr": 68
+      },
+      {
+        "cp": "31000",
+        "nom": "Les Chalets",
+        "priceM2": 4200,
+        "loyerM2": 14,
+        "adr": 65
+      },
+      {
+        "cp": "31000",
+        "nom": "Compans-Caffarelli",
+        "priceM2": 3800,
+        "loyerM2": 13,
+        "adr": 60
+      },
+      {
+        "cp": "31400",
+        "nom": "Rangueil",
+        "priceM2": 2900,
+        "loyerM2": 12,
+        "adr": 48
+      },
+      {
+        "cp": "31500",
+        "nom": "Côte Pavée",
+        "priceM2": 4000,
+        "loyerM2": 13,
+        "adr": 55
+      },
+      {
+        "cp": "31200",
+        "nom": "Borderouge",
+        "priceM2": 2800,
+        "loyerM2": 11,
+        "adr": 45
+      }
+    ]
+  },
+  "06088": {
+    "nom": "Nice",
+    "priceM2": 5000,
+    "loyerM2": 19,
+    "adr": 88,
+    "quartiers": [
+      {
+        "cp": "06300",
+        "nom": "Vieux-Nice / Centre",
+        "priceM2": 7000,
+        "loyerM2": 22,
+        "adr": 105
+      },
+      {
+        "cp": "06000",
+        "nom": "Promenade des Anglais",
+        "priceM2": 8500,
+        "loyerM2": 25,
+        "adr": 130
+      },
+      {
+        "cp": "06000",
+        "nom": "Cimiez",
+        "priceM2": 6500,
+        "loyerM2": 20,
+        "adr": 90
+      },
+      {
+        "cp": "06000",
+        "nom": "Libération",
+        "priceM2": 5500,
+        "loyerM2": 18,
+        "adr": 78
+      },
+      {
+        "cp": "06000",
+        "nom": "Gambetta",
+        "priceM2": 5800,
+        "loyerM2": 19,
+        "adr": 82
+      },
+      {
+        "cp": "06300",
+        "nom": "Pasteur",
+        "priceM2": 5200,
+        "loyerM2": 17,
+        "adr": 65
+      },
+      {
+        "cp": "06200",
+        "nom": "Saint-Isidore / Nord",
+        "priceM2": 3800,
+        "loyerM2": 14,
+        "adr": 55
+      }
+    ]
+  },
+  "44109": {
+    "nom": "Nantes",
+    "priceM2": 3800,
+    "loyerM2": 15,
+    "adr": 70
+  },
+  "67482": {
+    "nom": "Strasbourg",
+    "priceM2": 3400,
+    "loyerM2": 14,
+    "adr": 72
+  },
+  "34172": {
+    "nom": "Montpellier",
+    "priceM2": 3700,
+    "loyerM2": 15,
+    "adr": 75
+  },
+  "33063": {
+    "nom": "Bordeaux",
+    "priceM2": 4500,
+    "loyerM2": 16,
+    "adr": 78,
+    "quartiers": [
+      {
+        "cp": "33000",
+        "nom": "Centre-ville",
+        "priceM2": 6500,
+        "loyerM2": 18,
+        "adr": 105
+      },
+      {
+        "cp": "33300",
+        "nom": "Chartrons",
+        "priceM2": 5800,
+        "loyerM2": 17,
+        "adr": 90
+      },
+      {
+        "cp": "33000",
+        "nom": "Saint-Michel",
+        "priceM2": 4800,
+        "loyerM2": 15,
+        "adr": 78
+      },
+      {
+        "cp": "33300",
+        "nom": "Bacalan",
+        "priceM2": 4500,
+        "loyerM2": 14,
+        "adr": 62
+      },
+      {
+        "cp": "33000",
+        "nom": "Mériadeck",
+        "priceM2": 5500,
+        "loyerM2": 16,
+        "adr": 82
+      },
+      {
+        "cp": "33200",
+        "nom": "Caudéran",
+        "priceM2": 4500,
+        "loyerM2": 14,
+        "adr": 68
+      },
+      {
+        "cp": "33000",
+        "nom": "Saint-Augustin",
+        "priceM2": 4200,
+        "loyerM2": 13,
+        "adr": 65
+      },
+      {
+        "cp": "33800",
+        "nom": "Bordeaux-Sud",
+        "priceM2": 3800,
+        "loyerM2": 13,
+        "adr": 58
+      }
+    ]
+  },
+  "59350": {
+    "nom": "Lille",
+    "priceM2": 3200,
+    "loyerM2": 13,
+    "adr": 65,
+    "quartiers": [
+      {
+        "cp": "59800",
+        "nom": "Vieux-Lille",
+        "priceM2": 4500,
+        "loyerM2": 16,
+        "adr": 82
+      },
+      {
+        "cp": "59000",
+        "nom": "Centre / Hyper-centre",
+        "priceM2": 3800,
+        "loyerM2": 14,
+        "adr": 72
+      },
+      {
+        "cp": "59000",
+        "nom": "Wazemmes",
+        "priceM2": 3200,
+        "loyerM2": 13,
+        "adr": 58
+      },
+      {
+        "cp": "59000",
+        "nom": "Moulins",
+        "priceM2": 2800,
+        "loyerM2": 12,
+        "adr": 52
+      },
+      {
+        "cp": "59800",
+        "nom": "Fives",
+        "priceM2": 2600,
+        "loyerM2": 11,
+        "adr": 48
+      },
+      {
+        "cp": "59000",
+        "nom": "Bois-Blancs",
+        "priceM2": 2800,
+        "loyerM2": 12,
+        "adr": 55
+      },
+      {
+        "cp": "59000",
+        "nom": "Lille-Sud",
+        "priceM2": 2400,
+        "loyerM2": 11,
+        "adr": 45
+      }
+    ]
+  },
+  "35238": {
+    "nom": "Rennes",
+    "priceM2": 4000,
+    "loyerM2": 16,
+    "adr": 68
+  },
+  "51454": {
+    "nom": "Reims",
+    "priceM2": 2400,
+    "loyerM2": 13,
+    "adr": 72
+  },
+  "42218": {
+    "nom": "Saint-Étienne",
+    "priceM2": 1400,
+    "loyerM2": 9,
+    "adr": 45
+  },
+  "83137": {
+    "nom": "Toulon",
+    "priceM2": 3200,
+    "loyerM2": 14,
+    "adr": 65
+  },
+  "76351": {
+    "nom": "Le Havre",
+    "priceM2": 2200,
+    "loyerM2": 12,
+    "adr": 58
+  },
+  "38185": {
+    "nom": "Grenoble",
+    "priceM2": 2800,
+    "loyerM2": 14,
+    "adr": 58
+  },
+  "21231": {
+    "nom": "Dijon",
+    "priceM2": 2600,
+    "loyerM2": 13,
+    "adr": 62
+  },
+  "49007": {
+    "nom": "Angers",
+    "priceM2": 3100,
+    "loyerM2": 14,
+    "adr": 58
+  },
+  "30189": {
+    "nom": "Nîmes",
+    "priceM2": 2300,
+    "loyerM2": 12,
+    "adr": 65
+  },
+  "69266": {
+    "nom": "Villeurbanne",
+    "priceM2": 4000,
+    "loyerM2": 16,
+    "adr": 62
+  },
+  "63113": {
+    "nom": "Clermont-Ferrand",
+    "priceM2": 2100,
+    "loyerM2": 12,
+    "adr": 52
+  },
+  "13001": {
+    "nom": "Aix-en-Provence",
+    "priceM2": 5000,
+    "loyerM2": 20,
+    "adr": 95
+  },
+  "29019": {
+    "nom": "Brest",
+    "priceM2": 2400,
+    "loyerM2": 11,
+    "adr": 52
+  },
+  "37261": {
+    "nom": "Tours",
+    "priceM2": 2800,
+    "loyerM2": 13,
+    "adr": 65
+  },
+  "80021": {
+    "nom": "Amiens",
+    "priceM2": 2300,
+    "loyerM2": 12,
+    "adr": 55
+  },
+  "87085": {
+    "nom": "Limoges",
+    "priceM2": 1800,
+    "loyerM2": 10,
+    "adr": 45
+  },
+  "66136": {
+    "nom": "Perpignan",
+    "priceM2": 2100,
+    "loyerM2": 11,
+    "adr": 58
+  },
+  "57463": {
+    "nom": "Metz",
+    "priceM2": 2300,
+    "loyerM2": 12,
+    "adr": 58
+  },
+  "25056": {
+    "nom": "Besançon",
+    "priceM2": 2200,
+    "loyerM2": 12,
+    "adr": 52
+  },
+  "45234": {
+    "nom": "Orléans",
+    "priceM2": 2700,
+    "loyerM2": 13,
+    "adr": 58
+  },
+  "68224": {
+    "nom": "Mulhouse",
+    "priceM2": 1900,
+    "loyerM2": 10,
+    "adr": 45
+  },
+  "76540": {
+    "nom": "Rouen",
+    "priceM2": 2700,
+    "loyerM2": 13,
+    "adr": 58
+  },
+  "14118": {
+    "nom": "Caen",
+    "priceM2": 2600,
+    "loyerM2": 13,
+    "adr": 55
+  },
+  "54395": {
+    "nom": "Nancy",
+    "priceM2": 2200,
+    "loyerM2": 12,
+    "adr": 52
+  },
+  "64445": {
+    "nom": "Pau",
+    "priceM2": 2300,
+    "loyerM2": 11,
+    "adr": 48
+  },
+  "78646": {
+    "nom": "Versailles",
+    "priceM2": 6800,
+    "loyerM2": 23,
+    "adr": 105
+  },
+  "06029": {
+    "nom": "Cannes",
+    "priceM2": 7500,
+    "loyerM2": 22,
+    "adr": 110
+  },
+  "06004": {
+    "nom": "Antibes",
+    "priceM2": 5500,
+    "loyerM2": 20,
+    "adr": 92
+  },
+  "2A004": {
+    "nom": "Ajaccio",
+    "priceM2": 4800,
+    "loyerM2": 15,
+    "adr": 82
+  },
+  "74010": {
+    "nom": "Annecy",
+    "priceM2": 5500,
+    "loyerM2": 20,
+    "adr": 100
+  },
+  "64102": {
+    "nom": "Bayonne",
+    "priceM2": 4500,
+    "loyerM2": 15,
+    "adr": 82
+  },
+  "73065": {
+    "nom": "Chambéry",
+    "priceM2": 3300,
+    "loyerM2": 13,
+    "adr": 62
+  },
+  "86194": {
+    "nom": "Poitiers",
+    "priceM2": 2300,
+    "loyerM2": 11,
+    "adr": 52
+  },
+  "34032": {
+    "nom": "Béziers",
+    "priceM2": 1700,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "17300": {
+    "nom": "La Rochelle",
+    "priceM2": 4500,
+    "loyerM2": 16,
+    "adr": 85
+  },
+  "59183": {
+    "nom": "Dunkerque",
+    "priceM2": 2200,
+    "loyerM2": 11,
+    "adr": 50
+  },
+  "26362": {
+    "nom": "Valence",
+    "priceM2": 2200,
+    "loyerM2": 11,
+    "adr": 52
+  },
+  "84007": {
+    "nom": "Avignon",
+    "priceM2": 2800,
+    "loyerM2": 12,
+    "adr": 68
+  },
+  "68066": {
+    "nom": "Colmar",
+    "priceM2": 2800,
+    "loyerM2": 13,
+    "adr": 75
+  },
+  "56121": {
+    "nom": "Lorient",
+    "priceM2": 2500,
+    "loyerM2": 11,
+    "adr": 55
+  },
+  "29232": {
+    "nom": "Quimper",
+    "priceM2": 2500,
+    "loyerM2": 10,
+    "adr": 52
+  },
+  "56260": {
+    "nom": "Vannes",
+    "priceM2": 3500,
+    "loyerM2": 13,
+    "adr": 65
+  },
+  "35288": {
+    "nom": "Saint-Malo",
+    "priceM2": 5000,
+    "loyerM2": 16,
+    "adr": 88
+  },
+  "92012": {
+    "nom": "Boulogne-Billancourt",
+    "priceM2": 8200,
+    "loyerM2": 28,
+    "adr": 95
+  },
+  "92044": {
+    "nom": "Levallois-Perret",
+    "priceM2": 8500,
+    "loyerM2": 30,
+    "adr": 100
+  },
+  "92040": {
+    "nom": "Issy-les-Moulineaux",
+    "priceM2": 8000,
+    "loyerM2": 28,
+    "adr": 95
+  },
+  "94080": {
+    "nom": "Vincennes",
+    "priceM2": 8500,
+    "loyerM2": 30,
+    "adr": 95
+  },
+  "92051": {
+    "nom": "Neuilly-sur-Seine",
+    "priceM2": 10000,
+    "loyerM2": 35,
+    "adr": 110
+  },
+  "92026": {
+    "nom": "Courbevoie",
+    "priceM2": 6500,
+    "loyerM2": 26,
+    "adr": 82
+  },
+  "92063": {
+    "nom": "Rueil-Malmaison",
+    "priceM2": 6000,
+    "loyerM2": 24,
+    "adr": 75
+  },
+  "78560": {
+    "nom": "Saint-Germain-en-Laye",
+    "priceM2": 7000,
+    "loyerM2": 25,
+    "adr": 82
+  },
+  "91377": {
+    "nom": "Massy",
+    "priceM2": 4500,
+    "loyerM2": 20,
+    "adr": 65
+  },
+  "95127": {
+    "nom": "Cergy",
+    "priceM2": 3200,
+    "loyerM2": 18,
+    "adr": 58
+  },
+  "94028": {
+    "nom": "Créteil",
+    "priceM2": 4000,
+    "loyerM2": 19,
+    "adr": 62
+  },
+  "93008": {
+    "nom": "Aulnay-sous-Bois",
+    "priceM2": 2900,
+    "loyerM2": 16,
+    "adr": 50
+  },
+  "93048": {
+    "nom": "Montreuil",
+    "priceM2": 5200,
+    "loyerM2": 24,
+    "adr": 68
+  },
+  "93066": {
+    "nom": "Saint-Denis",
+    "priceM2": 3200,
+    "loyerM2": 19,
+    "adr": 62
+  },
+  "95018": {
+    "nom": "Argenteuil",
+    "priceM2": 3800,
+    "loyerM2": 17,
+    "adr": 55
+  },
+  "92046": {
+    "nom": "Colombes",
+    "priceM2": 5000,
+    "loyerM2": 22,
+    "adr": 68
+  },
+  "06138": {
+    "nom": "Saint-Laurent-du-Var",
+    "priceM2": 4500,
+    "loyerM2": 18,
+    "adr": 75
+  },
+  "06069": {
+    "nom": "Grasse",
+    "priceM2": 3200,
+    "loyerM2": 14,
+    "adr": 62
+  },
+  "83126": {
+    "nom": "Six-Fours-les-Plages",
+    "priceM2": 4000,
+    "loyerM2": 16,
+    "adr": 82
+  },
+  "13103": {
+    "nom": "Saint-Martin-de-Crau",
+    "priceM2": 2500,
+    "loyerM2": 12,
+    "adr": 55
+  },
+  "76176": {
+    "nom": "Dieppe",
+    "priceM2": 1900,
+    "loyerM2": 11,
+    "adr": 60
+  },
+  "62041": {
+    "nom": "Arras",
+    "priceM2": 2000,
+    "loyerM2": 12,
+    "adr": 55
+  },
+  "62160": {
+    "nom": "Lens",
+    "priceM2": 1400,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "60057": {
+    "nom": "Beauvais",
+    "priceM2": 2200,
+    "loyerM2": 12,
+    "adr": 52
+  },
+  "72181": {
+    "nom": "Le Mans",
+    "priceM2": 2200,
+    "loyerM2": 11,
+    "adr": 52
+  },
+  "53130": {
+    "nom": "Laval",
+    "priceM2": 1900,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "50129": {
+    "nom": "Cherbourg-en-Cotentin",
+    "priceM2": 2100,
+    "loyerM2": 11,
+    "adr": 52
+  },
+  "76005": {
+    "nom": "Évreux",
+    "priceM2": 2000,
+    "loyerM2": 11,
+    "adr": 48
+  },
+  "02691": {
+    "nom": "Soissons",
+    "priceM2": 1700,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "71270": {
+    "nom": "Mâcon",
+    "priceM2": 2000,
+    "loyerM2": 11,
+    "adr": 52
+  },
+  "58194": {
+    "nom": "Nevers",
+    "priceM2": 1500,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "03185": {
+    "nom": "Moulins",
+    "priceM2": 1400,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "15014": {
+    "nom": "Aurillac",
+    "priceM2": 1600,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "43157": {
+    "nom": "Le Puy-en-Velay",
+    "priceM2": 1600,
+    "loyerM2": 9,
+    "adr": 45
+  },
+  "19031": {
+    "nom": "Brive-la-Gaillarde",
+    "priceM2": 2000,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "24322": {
+    "nom": "Périgueux",
+    "priceM2": 2100,
+    "loyerM2": 10,
+    "adr": 52
+  },
+  "47091": {
+    "nom": "Agen",
+    "priceM2": 2000,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "40192": {
+    "nom": "Mont-de-Marsan",
+    "priceM2": 2200,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "65440": {
+    "nom": "Tarbes",
+    "priceM2": 1700,
+    "loyerM2": 10,
+    "adr": 45
+  },
+  "09122": {
+    "nom": "Foix",
+    "priceM2": 1800,
+    "loyerM2": 9,
+    "adr": 48
+  },
+  "11069": {
+    "nom": "Carcassonne",
+    "priceM2": 2000,
+    "loyerM2": 11,
+    "adr": 65
+  },
+  "12202": {
+    "nom": "Rodez",
+    "priceM2": 1900,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "48095": {
+    "nom": "Mende",
+    "priceM2": 1700,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "07186": {
+    "nom": "Privas",
+    "priceM2": 2200,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "01053": {
+    "nom": "Bourg-en-Bresse",
+    "priceM2": 2400,
+    "loyerM2": 11,
+    "adr": 48
+  },
+  "39300": {
+    "nom": "Lons-le-Saunier",
+    "priceM2": 1900,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "70550": {
+    "nom": "Vesoul",
+    "priceM2": 1500,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "88160": {
+    "nom": "Épinal",
+    "priceM2": 1600,
+    "loyerM2": 10,
+    "adr": 45
+  },
+  "55029": {
+    "nom": "Bar-le-Duc",
+    "priceM2": 1400,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "08105": {
+    "nom": "Charleville-Mézières",
+    "priceM2": 1500,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "10387": {
+    "nom": "Troyes",
+    "priceM2": 2000,
+    "loyerM2": 12,
+    "adr": 55
+  },
+  "52121": {
+    "nom": "Chaumont",
+    "priceM2": 1400,
+    "loyerM2": 9,
+    "adr": 42
+  },
+  "89024": {
+    "nom": "Auxerre",
+    "priceM2": 1800,
+    "loyerM2": 10,
+    "adr": 52
+  },
+  "18033": {
+    "nom": "Bourges",
+    "priceM2": 1700,
+    "loyerM2": 10,
+    "adr": 48
+  },
+  "41018": {
+    "nom": "Blois",
+    "priceM2": 2200,
+    "loyerM2": 11,
+    "adr": 62
+  },
+  "28085": {
+    "nom": "Chartres",
+    "priceM2": 2600,
+    "loyerM2": 13,
+    "adr": 65
+  },
+  "27229": {
+    "nom": "Évreux",
+    "priceM2": 2000,
+    "loyerM2": 11,
+    "adr": 48
+  }
+}
