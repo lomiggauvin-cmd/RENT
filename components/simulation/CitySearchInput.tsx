@@ -27,8 +27,10 @@ export interface Quartier {
 interface VilleEntry {
   nom: string;
   priceM2: number;
-  /** ADR moyen de la ville (€/nuit) */
+  loyerM2?: number;
   adr?: number;
+  occupancyRate?: number;
+  monthlyOccupancy?: number[];
   quartiers?: Quartier[];
 }
 
@@ -39,8 +41,14 @@ export interface SelectedCity {
   departement: string;
   /** Prix moyen ville (DB) — null si ville absente */
   pricePerM2: number | null;
+  /** Loyer moyen LLD (€/m²) — null si ville absente */
+  loyerM2: number | null;
   /** ADR ville issu du JSON local — null si absent */
   adr: number | null;
+  /** Taux d'occupation annuel moyen — null si ville absente */
+  occupancyRate: number | null;
+  /** Taux d'occupation mensuel Jan→Déc — null si ville absente */
+  monthlyOccupancy: number[] | null;
   /** Liste de quartiers disponibles, null si aucun */
   quartiers: Quartier[] | null;
   /** Quartier pré-sélectionné automatiquement via code postal exact */
@@ -58,12 +66,22 @@ interface CitySearchInputProps {
 
 const villes = villesData as Record<string, VilleEntry>;
 
-function lookupCity(codeInsee: string): { priceM2: number | null; adr: number | null; quartiers: Quartier[] | null } {
+function lookupCity(codeInsee: string): {
+  priceM2: number | null;
+  loyerM2: number | null;
+  adr: number | null;
+  occupancyRate: number | null;
+  monthlyOccupancy: number[] | null;
+  quartiers: Quartier[] | null;
+} {
   const entry = villes[codeInsee];
-  if (!entry) return { priceM2: null, adr: null, quartiers: null };
+  if (!entry) return { priceM2: null, loyerM2: null, adr: null, occupancyRate: null, monthlyOccupancy: null, quartiers: null };
   return {
     priceM2: entry.priceM2,
+    loyerM2: entry.loyerM2 ?? null,
     adr: entry.adr ?? null,
+    occupancyRate: entry.occupancyRate ?? null,
+    monthlyOccupancy: entry.monthlyOccupancy ?? null,
     quartiers: entry.quartiers ?? null,
   };
 }
@@ -163,14 +181,17 @@ export default function CitySearchInput({
 
   const selectCommune = (commune: GeoCommune) => {
     const codePostal = commune.codesPostaux?.[0] ?? '';
-    const { priceM2, adr, quartiers } = lookupCity(commune.code);
+    const { priceM2, loyerM2, adr, occupancyRate, monthlyOccupancy, quartiers } = lookupCity(commune.code);
     const city: SelectedCity = {
       nom: commune.nom,
       codePostal,
       codeInsee: commune.code,
       departement: commune.departement?.nom ?? '',
       pricePerM2: priceM2,
+      loyerM2,
       adr,
+      occupancyRate,
+      monthlyOccupancy,
       quartiers,
     };
     onSelect(city);
@@ -203,7 +224,10 @@ export default function CitySearchInput({
           codeInsee: match.codeInsee,
           departement: dept,
           pricePerM2: match.entry.priceM2,
+          loyerM2: match.entry.loyerM2 ?? null,
           adr: match.entry.adr ?? null,
+          occupancyRate: match.entry.occupancyRate ?? null,
+          monthlyOccupancy: match.entry.monthlyOccupancy ?? null,
           quartiers: match.entry.quartiers ?? null,
           autoSelectedQuartier: match.quartier,
         };

@@ -186,8 +186,8 @@ export default function DashboardPage() {
   const hasPersonalUse = personalUseMonths.length > 0;
   const hasWinterPersonalUse = personalUseMonths.some(m => !SUMMER_MONTHS.includes(m));
 
-  // Occupancy chart data from seasonality matrix
-  const seasonality = getSeasonalityMatrix(marketData.short.tauxOccupationAnnuel);
+  // Occupancy chart : données mensuelles locales si disponibles, sinon matrice dérivée
+  const seasonality = getSeasonalityMatrix(marketData.short.tauxOccupationAnnuel, marketData.short.monthlyOccupancy);
   const adr = marketData.short.adr;
   const occupancyData = seasonality.map((m, i) => {
     const multiplier = getDynamicPriceMultiplier(m.occupancyRate);

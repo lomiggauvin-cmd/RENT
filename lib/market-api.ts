@@ -47,27 +47,27 @@ function normalizeCity(name: string) {
 // ============================
 
 function generateFallbackMarketData(city: string, ministereData?: any): MarketDataResponse {
-  const seed = city.length;
-  // If ministry data is available, use it! Otherwise fallback.
-  const baseRentFallback = 12 + seed * 0.5;
-  const loyerMoyenM2 = ministereData?.app ?? ministereData?.mai ?? baseRentFallback;
-  
-  const baseADR = 75 + seed * 5;         // ADR Airbnb
-  const baseOccupancy = 0.65 + (seed % 20) / 100;
-  const revenusEstimesMensuel = baseADR * 30.42 * baseOccupancy;
+  // Loyer LD : données ministère si disponibles, sinon profil conservateur petite ville
+  const loyerMoyenM2 = ministereData?.app ?? ministereData?.mai ?? 10;
+
+  // Profil conservateur petite ville de province — valeurs fixes, pas de seed aléatoire
+  // Hypothèse saisonnière : 60% en été, 35% hors-saison → ~45% annuel
+  const adr = 45;
+  const tauxOccupationAnnuel = 0.45;
+  const tauxOccupationEte = 0.60;
 
   return {
     long: {
       loyerMoyenM2: Math.round(loyerMoyenM2 * 100) / 100,
-      plafondLoyer: null, 
+      plafondLoyer: null,
       zone: city,
       donneesMinistere: ministereData,
     },
     short: {
-      adr: baseADR,
-      tauxOccupationAnnuel: Math.min(0.95, baseOccupancy),
-      tauxOccupationEte: Math.min(0.98, baseOccupancy * 1.3),
-      revenusEstimesMensuel: Math.round(revenusEstimesMensuel),
+      adr,
+      tauxOccupationAnnuel,
+      tauxOccupationEte,
+      revenusEstimesMensuel: Math.round(adr * 30 * tauxOccupationAnnuel),
     },
   };
 }

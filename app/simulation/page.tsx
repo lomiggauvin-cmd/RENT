@@ -87,8 +87,6 @@ type DPEGrade = "A" | "B" | "C" | "D" | "E" | "F" | "G";
 export default function SimulationPage() {
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<SectionId>(1);
-  const [apiLoading, setApiLoading] = useState(false);
-  const [apiError, setApiError] = useState(false);
   const [launching, setLaunching] = useState(false);
   const [showLeadModal, setShowLeadModal] = useState(false);
 
@@ -175,45 +173,54 @@ export default function SimulationPage() {
     marketData
   );
 
-  // Prix effectif : quartier sélectionné > prix ville DB > prix manuel
-  // Toujours nullable — si null, l'utilisateur doit saisir propertyValue manuellement
-  const effectivePriceM2: number | null =
-    selectedQuartier?.priceM2 ?? pricePerM2Db ?? (manualPricePerM2 > 0 ? manualPricePerM2 : null);
+  // Prix effectif : quartier sélectionné > prix ville DB > prix manuel > fallback petite ville
+  // Reste null si aucune ville sélectionnée ; sinon toujours un nombre (1500 = petite province)
+  const effectivePriceM2: number | null = selectedCity
+    ? (selectedQuartier?.priceM2 ?? pricePerM2Db ?? (manualPricePerM2 > 0 ? manualPricePerM2 : 1500))
+    : null;
 
-  // ── Fetch market data ──
-  const fetchMarket = useCallback(async (cityName: string, cp: string) => {
-    setApiLoading(true);
-    setApiError(false);
-    try {
-      const addr = cp ? `${cityName} ${cp}` : cityName;
-      const res = await fetch(`/api/market-data?address=${encodeURIComponent(addr)}&city=${encodeURIComponent(cityName)}`);
-      if (!res.ok) throw new Error('API failed');
-      const data: MarketDataResponse = await res.json();
-      setMarketData(data);
-    } catch {
-      setApiError(true);
-    } finally {
-      setApiLoading(false);
-    }
-  }, []);
-
-  // ── Callback ville sélectionnée ──
+  // ── Callback ville sélectionnée — construction locale de marketData (zéro API) ──
   const handleCitySelect = useCallback((city: SelectedCity) => {
     setSelectedCity(city);
-    // Si une correspondance directe par code postal a été trouvée, pré-sélectionner le quartier
     const autoQuartier = city.autoSelectedQuartier ?? null;
     setSelectedQuartier(autoQuartier);
     setAddress(`${city.nom}, ${city.codePostal}`);
     setCodePostal(city.codePostal);
     setPricePerM2Db(city.pricePerM2);
     setManualPricePerM2(0);
-    // Auto-suggère la valeur du bien : priorité quartier > ville, si surface connue
     const effectivePrice = autoQuartier?.priceM2 ?? city.pricePerM2;
     if (effectivePrice && surface > 0) {
       setPropertyValue(Math.round(effectivePrice * surface));
     }
-    fetchMarket(city.nom, city.codePostal);
-  }, [fetchMarket, surface]);
+
+    // Profil par défaut petite ville (commune absente de villes.json)
+    const FALLBACK_ADR             = 45;
+    const FALLBACK_LOYER           = 10;
+    const FALLBACK_ANNUAL          = 0.45;
+    const FALLBACK_MONTHLY: number[] = [0.35, 0.35, 0.40, 0.45, 0.50, 0.60, 0.70, 0.65, 0.45, 0.35, 0.30, 0.30];
+
+    const adr             = city.adr           ?? FALLBACK_ADR;
+    const loyer           = city.loyerM2       ?? FALLBACK_LOYER;
+    const monthly         = city.monthlyOccupancy ?? FALLBACK_MONTHLY;
+    const annualRate      = city.occupancyRate  ?? FALLBACK_ANNUAL;
+    // Taux estival = moyenne juin/juil/août (indices 5,6,7)
+    const tauxEte         = (monthly[5] + monthly[6] + monthly[7]) / 3;
+
+    setMarketData({
+      long: {
+        loyerMoyenM2: loyer,
+        plafondLoyer: null,
+        zone: city.nom,
+      },
+      short: {
+        adr,
+        tauxOccupationAnnuel: annualRate,
+        tauxOccupationEte: tauxEte,
+        revenusEstimesMensuel: Math.round(adr * 30 * annualRate),
+        monthlyOccupancy: monthly,
+      },
+    });
+  }, [surface]);
 
   const handleCitylear = useCallback(() => {
     setSelectedCity(null);
@@ -223,7 +230,6 @@ export default function SimulationPage() {
     setPricePerM2Db(null);
     setManualPricePerM2(0);
     setMarketData(null);
-    setApiError(false);
   }, []);
 
   // ── Save draft to localStorage ──
@@ -325,20 +331,18 @@ export default function SimulationPage() {
         allowsShortTerm,
       };
 
-      // Priorité quartier > ville pour le loyer LD
-      const marketLong: MarketDataLongTerm = selectedQuartier?.loyerM2
-        ? { ...marketData.long, loyerMoyenM2: selectedQuartier.loyerM2 }
-        : marketData.long;
+      // marketData est construit localement lors de la sélection de la ville —
+      // les fallbacks petite ville sont déjà appliqués. On applique seulement
+      // le surclassement éventuel par les données de quartier.
+      const loyerFinal = selectedQuartier?.loyerM2 || marketData.long.loyerMoyenM2;
+      const marketLong: MarketDataLongTerm = { ...marketData.long, loyerMoyenM2: loyerFinal };
 
-      // ADR local : quartier > ville > API (taux d'occupation conservé depuis l'API)
-      const localAdr = selectedQuartier?.adr ?? selectedCity?.adr ?? null;
-      const marketShort: MarketDataShortTerm = localAdr
-        ? {
-            ...marketData.short,
-            adr: localAdr,
-            revenusEstimesMensuel: Math.round(localAdr * 30 * marketData.short.tauxOccupationAnnuel),
-          }
-        : marketData.short;
+      const adrFinal = selectedQuartier?.adr || selectedCity?.adr || marketData.short.adr;
+      const marketShort: MarketDataShortTerm = {
+        ...marketData.short,
+        adr: adrFinal,
+        revenusEstimesMensuel: Math.round(adrFinal * 30 * marketData.short.tauxOccupationAnnuel),
+      };
 
       const results = runAnalysis(inputs, marketLong, marketShort);
 
@@ -415,47 +419,20 @@ export default function SimulationPage() {
           {activeSection === 1 && (
             <div className="p-8 bg-white/[0.02] animate-fade-in-down">
               {/* City search */}
-              <InputField label="Ville / Commune" required hint="Tapez pour rechercher — les données de marché se chargent automatiquement.">
+              <InputField label="Ville / Commune" required hint="Tapez pour rechercher — données locales instantanées.">
                 <CitySearchInput
                   value={selectedCity}
                   onSelect={handleCitySelect}
                   onClear={handleCitylear}
-                  status={apiLoading ? 'loading' : marketData ? 'success' : apiError ? 'error' : 'idle'}
+                  status={marketData ? 'success' : 'idle'}
                 />
-                {marketData && !apiLoading && (
+                {marketData && (
                   <div className="flex items-center gap-2 mt-2 text-xs text-[#10b981] font-['Inter']">
                     <Zap className="w-3 h-3" />
-                    Données chargées — Loyer moyen : {marketData.long.loyerMoyenM2}€/m² · ADR Airbnb : {marketData.short.adr}€
+                    Données chargées — Loyer moyen : {marketData.long.loyerMoyenM2}€/m² · ADR : {marketData.short.adr}€ · Taux : {Math.round(marketData.short.tauxOccupationAnnuel * 100)}%
                   </div>
                 )}
               </InputField>
-
-              {/* Manual override */}
-              {apiError && (
-                <div className="mt-4 mb-6 p-6 rounded-xl bg-[#ef4444]/5 border border-[#ef4444]/20 animate-fade-in-down">
-                  <div className="flex items-center gap-2 mb-4">
-                    <AlertTriangle className="w-4 h-4 text-[#ef4444]" />
-                    <h4 className="text-sm font-bold text-[#ef4444] font-['Inter']">Données non disponibles — Saisie manuelle</h4>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4">
-                    {[
-                      { label: 'Loyer moyen (€/m²)', value: marketData?.long.loyerMoyenM2 ?? '', onChange: (v: number) => setMarketData(prev => prev ? { ...prev, long: { ...prev.long, loyerMoyenM2: v } } : { long: { loyerMoyenM2: v, plafondLoyer: null, zone: '' }, short: { adr: 85, tauxOccupationAnnuel: 0.72, tauxOccupationEte: 0.9, revenusEstimesMensuel: 1800 } }) },
-                      { label: 'ADR Airbnb (€/nuit)', value: marketData?.short.adr ?? '', onChange: (v: number) => setMarketData(prev => prev ? { ...prev, short: { ...prev.short, adr: v } } : { long: { loyerMoyenM2: 15, plafondLoyer: null, zone: '' }, short: { adr: v, tauxOccupationAnnuel: 0.72, tauxOccupationEte: 0.9, revenusEstimesMensuel: v * 30 * 0.72 } }) },
-                      { label: 'Taux occupation (%)', value: marketData?.short.tauxOccupationAnnuel ? marketData.short.tauxOccupationAnnuel * 100 : '', onChange: (v: number) => setMarketData(prev => prev ? { ...prev, short: { ...prev.short, tauxOccupationAnnuel: v / 100 } } : { long: { loyerMoyenM2: 15, plafondLoyer: null, zone: '' }, short: { adr: 85, tauxOccupationAnnuel: v / 100, tauxOccupationEte: Math.min(0.98, v / 100 * 1.25), revenusEstimesMensuel: 85 * 30 * v / 100 } }) },
-                    ].map(f => (
-                      <div key={f.label}>
-                        <label className="block text-xs font-medium text-[#94a3b8] mb-2 font-['Inter']">{f.label}</label>
-                        <input
-                          type="number"
-                          value={f.value}
-                          onChange={e => f.onChange(Number(e.target.value))}
-                          className="w-full px-4 py-3 rounded-lg bg-[#0c1222] border border-white/[0.10] text-[#f8fafc] font-['JetBrains_Mono'] focus:border-[#3b82f6] focus:outline-none transition-all"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {/* Quartier — affiché uniquement si la ville a des quartiers */}
               {selectedCity?.quartiers && (
@@ -922,6 +899,7 @@ export default function SimulationPage() {
                       className="w-full px-4 py-3 rounded-lg bg-[#0c1222] border border-white/[0.10] text-[#f8fafc] font-['Inter'] focus:outline-none focus:border-[#3b82f6] transition-all appearance-none cursor-pointer"
                     >
                       <option value="celibataire-0">Célibataire (1 part)</option>
+                      <option value="celibataire-1">Célibataire + 1 enfant (1.5 parts)</option>
                       <option value="couple-0">Couple (2 parts)</option>
                       <option value="couple-1">Couple + 1 enfant (2.5 parts)</option>
                       <option value="couple-2">Couple + 2 enfants (3 parts)</option>

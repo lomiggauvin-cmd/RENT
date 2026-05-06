@@ -57,6 +57,8 @@ export interface MarketDataShortTerm {
   tauxOccupationAnnuel: number; // 0-1
   tauxOccupationEte: number;    // 0-1
   revenusEstimesMensuel: number;
+  /** Taux d'occupation mensuel Jan→Déc (12 valeurs 0-1) — source locale villes.json */
+  monthlyOccupancy?: number[];
 }
 
 export interface TaxRegime {
@@ -201,26 +203,38 @@ interface SeasonalityMonth {
   isSummer: boolean;
 }
 
+const MONTH_META = [
+  { name: "Jan",  days: 31, isSummer: false },
+  { name: "Fév",  days: 28, isSummer: false },
+  { name: "Mar",  days: 31, isSummer: false },
+  { name: "Avr",  days: 30, isSummer: false },
+  { name: "Mai",  days: 31, isSummer: false },
+  { name: "Juin", days: 30, isSummer: true  },
+  { name: "Juil", days: 31, isSummer: true  },
+  { name: "Août", days: 31, isSummer: true  },
+  { name: "Sep",  days: 30, isSummer: false },
+  { name: "Oct",  days: 31, isSummer: false },
+  { name: "Nov",  days: 30, isSummer: false },
+  { name: "Déc",  days: 31, isSummer: false },
+];
+
 /**
- * Matrice de saisonnalité : chaque mois a un taux d'occupation dérivé
- * du taux annuel de base (données marché). Le priceMultiplier statique
- * a été supprimé au profit du calcul dynamique getDynamicPriceMultiplier().
+ * Matrice de saisonnalité mensuelle.
+ * Si un tableau monthlyOccupancy (12 valeurs) est fourni, il est utilisé directement
+ * (données locales villes.json). Sinon, les taux sont dérivés du taux annuel de base.
  */
-export function getSeasonalityMatrix(baseOccupancy: number): SeasonalityMonth[] {
-  return [
-    { name: "Jan", days: 31, occupancyRate: Math.min(1, baseOccupancy * 0.8), isSummer: false },
-    { name: "Fév", days: 28, occupancyRate: Math.min(1, baseOccupancy * 0.7), isSummer: false },
-    { name: "Mar", days: 31, occupancyRate: Math.min(1, baseOccupancy * 0.9), isSummer: false },
-    { name: "Avr", days: 30, occupancyRate: Math.min(1, baseOccupancy * 1.0), isSummer: false },
-    { name: "Mai", days: 31, occupancyRate: Math.min(1, baseOccupancy * 1.1), isSummer: false },
-    { name: "Juin", days: 30, occupancyRate: Math.min(1, baseOccupancy * 1.2), isSummer: true },
-    { name: "Juil", days: 31, occupancyRate: Math.min(1, baseOccupancy * 1.4), isSummer: true },
-    { name: "Août", days: 31, occupancyRate: Math.min(1, baseOccupancy * 1.4), isSummer: true },
-    { name: "Sep", days: 30, occupancyRate: Math.min(1, baseOccupancy * 1.1), isSummer: false },
-    { name: "Oct", days: 31, occupancyRate: Math.min(1, baseOccupancy * 1.0), isSummer: false },
-    { name: "Nov", days: 30, occupancyRate: Math.min(1, baseOccupancy * 0.8), isSummer: false },
-    { name: "Déc", days: 31, occupancyRate: Math.min(1, baseOccupancy * 0.9), isSummer: false },
-  ];
+export function getSeasonalityMatrix(baseOccupancy: number, monthlyOccupancy?: number[]): SeasonalityMonth[] {
+  if (monthlyOccupancy && monthlyOccupancy.length === 12) {
+    return MONTH_META.map((m, i) => ({
+      ...m,
+      occupancyRate: Math.min(1, monthlyOccupancy[i]),
+    }));
+  }
+  const multipliers = [0.8, 0.7, 0.9, 1.0, 1.1, 1.2, 1.4, 1.4, 1.1, 1.0, 0.8, 0.9];
+  return MONTH_META.map((m, i) => ({
+    ...m,
+    occupancyRate: Math.min(1, baseOccupancy * multipliers[i]),
+  }));
 }
 
 // =============================================
@@ -758,7 +772,7 @@ export function runAnalysis(
   };
 
   // ====== SCENARIO B: Courte Durée (Yield Management) ======
-  const seasonalityMatrix = getSeasonalityMatrix(marketShort.tauxOccupationAnnuel);
+  const seasonalityMatrix = getSeasonalityMatrix(marketShort.tauxOccupationAnnuel, marketShort.monthlyOccupancy);
 
   // Yield Management : calcul mensuel dynamique avec tarification par TO
   const personalDays = options?.fees?.personalUseDays ?? 0;
