@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Check, Star, Sparkles, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { Check, Star, Sparkles, Mail, Building2, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 
 export const metadata: Metadata = {
@@ -159,6 +160,27 @@ export default function ConciergeriePage() {
             <p className="mt-3 text-xs text-[#475569] font-['Inter']">
               {CONTACT_EMAIL}
             </p>
+          </div>
+
+          {/* ── CTA conciergeries partenaires ── */}
+          <div className="mt-16 p-8 rounded-2xl bg-[#0f172a] border border-[#8b5cf6]/20 text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#8b5cf6]/10 border border-[#8b5cf6]/20 mb-4">
+              <Building2 className="w-6 h-6 text-[#8b5cf6]" />
+            </div>
+            <h3 className="font-['DM_Sans'] text-xl font-bold text-[#f8fafc] mb-2">
+              Vous êtes une conciergerie professionnelle ?
+            </h3>
+            <p className="text-sm text-[#94a3b8] font-['Inter'] max-w-md mx-auto mb-6">
+              Rejoignez notre réseau de partenaires et accédez à de nouveaux clients propriétaires sur RentaVision.
+            </p>
+            <Link
+              href="/conciergerie/inscription"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-['Inter'] font-bold text-sm transition-all shadow-[0_0_20px_rgba(139,92,246,0.25)] hover:shadow-[0_0_30px_rgba(139,92,246,0.4)]"
+            >
+              <Building2 className="w-4 h-4" />
+              Je suis une conciergerie → Rejoindre le réseau
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 
